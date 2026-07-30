@@ -4,9 +4,9 @@ Automatically mute TV commercials from a Raspberry Pi with an
 [ANAVI Infrared pHAT](https://anavi.technology/). Written in portable C++17.
 
 It watches an audio signal for ad breaks, and when it decides a commercial is
-airing it mutes the TV — over the TV's LAN API when one is reachable, and over
+airing it drops the TV volume considerably — over the TV's LAN API when one is reachable, and over
 infrared (via the ANAVI pHAT) as a universal fallback. When the program
-resumes, it unmutes.
+resumes, it unmutes or returns to the previous volume setting. It can also perform audio normalization (hold the TV volume at a set volume regardless of ads or room noise.
 
 ## How detection works
 
