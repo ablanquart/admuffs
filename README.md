@@ -8,7 +8,7 @@ airing it mutes the TV — over the TV's LAN API when one is reachable, and over
 infrared (via the ANAVI pHAT) as a universal fallback. When the program
 resumes, it unmutes.
 
-## The honest part first: how detection works
+## How detection works
 
 The Infrared pHAT can only **send and receive IR**. It has no view of what's on
 the screen or in the audio, so "know when a commercial is on" has to come from a
