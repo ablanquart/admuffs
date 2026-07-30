@@ -6,7 +6,7 @@ Automatically mute TV commercials from a Raspberry Pi with an
 It watches an audio signal for ad breaks, and when it decides a commercial is
 airing it drops the TV volume considerably — over the TV's LAN API when one is reachable, and over
 infrared (via the ANAVI pHAT) as a universal fallback. When the program
-resumes, it unmutes or returns to the previous volume setting. It can also perform audio normalization (hold the TV volume at a set volume regardless of ads or room noise.
+resumes, it unmutes or returns to the previous volume setting. It can also perform audio normalization - if selected, Admuffs will hold the TV volume at a desired volume regardless of ads or room noise.
 
 ## How detection works
 
