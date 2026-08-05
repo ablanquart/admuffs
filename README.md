@@ -88,7 +88,7 @@ with a clear `TODO` at the function to implement (`src/detect/sources.cpp`).
    ads-only bucket ⇒ weak *program* vote; a plain music-catalog match is
    treated as neutral.
 
-## What's implemented
+## Supported and Implemented
 
 - **TUI setup wizard** (ncurses): pick brand/model, discover the TV on the LAN,
   pair, choose IR backend, pick the audio input, and send a live test mute.
@@ -245,7 +245,7 @@ sudo cmake --install build
 ```
 
 This puts the binary at `/usr/local/bin/admuffs` and the IR code database at
-`/usr/local/share/admuffs/ir_codes`, so `admuffs` works from **any** directory.
+`/usr/local/share/admuffs/ir_codes`.
 The database is searched in this order: an explicit `ir_db_dir` from the
 config / `--ir-db`, then `./data/ir_codes` (source checkout), then
 `/usr/local/share/admuffs/ir_codes`, then `/usr/share/admuffs/ir_codes`. To add
