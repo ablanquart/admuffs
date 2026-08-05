@@ -50,7 +50,7 @@ and unmute into the ad. admuffs deals with this four ways, selected by
    `norm_interval_ms` keeps corrections gentle, `norm_max_range` (default 12
    steps) bounds drift from your set volume, a silence floor stops it from
    cranking the volume during dialogue pauses or when the TV is off, and the
-   net adjustment is unwound when auto-mute is toggled off or admuffs exits.
+   net adjustment is unwound when AUTO VOLUME CONTROL is toggled off or admuffs exits.
 3. **Upstream tap (`audio_tap=upstream`)** — feed detection from
    *before* the TV (source line-out, HDMI audio extractor, or TV optical-out).
    Detection hears the broadcast while the TV is silent; unmute timing is
@@ -112,9 +112,9 @@ with a clear `TODO` at the function to implement (`src/detect/sources.cpp`).
 - **Layered detector + fusion engine** with debounce/hysteresis.
 - **Web remote** — while `admuffs --run` is active, a browser-based remote is
   served on port 8995 (Power, D-pad + OK, Back, Home, Settings,
-  digits 0–9, Vol ±, Ch ±, Mute, Input), plus an auto-mute toggle,
+  digits 0–9, Vol ±, Ch ±, Mute, Input), plus an AUTO VOLUME CONTROL toggle,
   loudness-calibration sampling buttons, and a FIX VOLUME TARGET button for
-  normalize mode. Every press goes through the same control path as the auto-mute:
+  normalize mode. Every press goes through the same control path as the automatic ad handling:
   network API when reachable, IR fallback otherwise.
 
 ## Hardware
@@ -287,9 +287,9 @@ to setup; once configured, it defaults to `--run`. A sample config is in
       <sub>Full TV remote; status line shows the live control path.</sub>
     </td>
     <td align="center" valign="top" width="33%">
-      <img src="docs/screenshots/03-automute-off.png" width="240" alt="Auto-mute off"><br>
-      <b>Auto-mute toggle</b><br>
-      <sub>Tap the pill to pause commercial muting (red = off).</sub>
+      <img src="docs/screenshots/03-automute-off.png" width="240" alt="Auto volume control off"><br>
+      <b>Auto volume control toggle</b><br>
+      <sub>Tap the pill to pause automatic ad handling (red = off).</sub>
     </td>
   </tr>
   <tr>
@@ -341,8 +341,9 @@ channel rockers, Mute, and a numeric keypad. A press flashes green when the comm
 it failed; the header shows which control path is live (e.g. `LG webOS
 (192.168.1.9) -> IR (LG (generic), ir-ctl)`).
 
-The pill at the top toggles **auto-mute on/off** — tap it to pause the
-detection loop's control of the TV (green = on, red = off). The rest of the
+The **AUTO VOLUME CONTROL** pill at the top toggles automatic ad handling
+on/off — tap it to pause the detection loop's control of the TV (green = on,
+red = off). The rest of the
 remote keeps working while paused, and toggling mid-commercial keeps the TV
 consistent (disabling unmutes; re-enabling re-mutes). Detection continues in
 the background either way, so flipping it back on is instant.

@@ -72,8 +72,9 @@ const char* kRemotePage = R"HTML(<!DOCTYPE html>
                  letter-spacing:.04em; }
   #automute { display:flex; align-items:center; justify-content:center;
               gap:8px; margin:0 auto 14px; padding:8px 14px; width:auto;
-              max-width:220px; border-radius:999px; font-size:12px;
-              letter-spacing:.06em; background:var(--btn); color:#8b95a3; }
+              max-width:262px; border-radius:999px; font-size:11px;
+              letter-spacing:.05em; background:var(--btn); color:#8b95a3;
+              white-space:nowrap; }
   #automute .dot { width:9px; height:9px; border-radius:50%;
                    background:#555e6a; transition:background .15s; }
   #automute.on { color:#bfe6c8; background:#1d3324; }
@@ -172,7 +173,7 @@ const char* kRemotePage = R"HTML(<!DOCTYPE html>
   <h1>ADMUFFS</h1>
   <div id="status">connecting&hellip;</div>
 
-  <button id="automute"><span class="dot"></span><span id="amlabel">AUTO-MUTE</span></button>
+  <button id="automute"><span class="dot"></span><span id="amlabel">AUTO VOLUME CONTROL</span></button>
 
   <!-- ===================== main remote ===================== -->
   <div id="main" class="panel" style="display:block">
@@ -331,12 +332,12 @@ const char* kRemotePage = R"HTML(<!DOCTYPE html>
     setTimeout(() => btn.classList.remove(cls), 350);
   }
 
-  // ---- status + auto-mute pill ----
+  // ---- status + auto-volume-control pill ----
   const amBtn = $('automute'), amLabel = $('amlabel');
   function setAm(on) {
     amBtn.classList.toggle('on', on);
     amBtn.classList.toggle('off', !on);
-    amLabel.textContent = 'AUTO-MUTE: ' + (on ? 'ON' : 'OFF');
+    amLabel.textContent = 'AUTO VOLUME CONTROL: ' + (on ? 'ON' : 'OFF');
   }
   function refreshStatus() {
     return fetch('/status').then(r => {
@@ -647,7 +648,7 @@ const char* kRemotePage = R"HTML(<!DOCTYPE html>
       h += infRow('kernel', j.kernel);
       h += infRow('uptime', j.uptime);
       h += infRow('controller', j.controller);
-      h += infRow('mode', j.mode + (j.automute ? '' : ' (auto-mute off)'));
+      h += infRow('mode', j.mode + (j.automute ? '' : ' (auto volume control off)'));
       h += infRow('service', j.service);
       h += '<div class="inf-sec">P HAT SENSORS (I2C)</div>';
       if (!j.i2c) {
@@ -997,7 +998,7 @@ void WebServer::handle_client(int fd) {
         if (!hooks_.automute_get || !hooks_.automute_set) resp = not_wired();
         else {
             bool now = hooks_.automute_set(!hooks_.automute_get());
-            LOG_INFO("web remote: auto-mute toggled -> %s", now ? "ON" : "OFF");
+            LOG_INFO("web remote: auto volume control toggled -> %s", now ? "ON" : "OFF");
             resp = http_response(200, "OK", "application/json",
                                  std::string("{\"automute\":") + (now ? "true" : "false") + "}");
         }
