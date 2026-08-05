@@ -3,7 +3,7 @@
 Automatically drop volume/normalize or mute TV commercials from a Raspberry Pi with an
 [ANAVI Infrared pHAT](https://anavi.technology/). Written in portable C++17.
 
-It watches an audio signal for ad breaks, and when it decides a commercial is
+Admuffs listens to an audio signal for ad breaks, and when it decides a commercial is
 airing it lowers or mutes the TV volume — over the TV's LAN API when one is reachable, and over
 infrared (via the ANAVI pHAT) as a universal fallback. When the program
 resumes, it unmutes.
