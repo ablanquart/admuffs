@@ -1,10 +1,10 @@
 # admuffs
 
-Automatically mute TV commercials from a Raspberry Pi with an
+Automatically drop volume/normalize or mute TV commercials from a Raspberry Pi with an
 [ANAVI Infrared pHAT](https://anavi.technology/). Written in portable C++17.
 
 It watches an audio signal for ad breaks, and when it decides a commercial is
-airing it mutes the TV — over the TV's LAN API when one is reachable, and over
+airing it lowers or mutes the TV volume — over the TV's LAN API when one is reachable, and over
 infrared (via the ANAVI pHAT) as a universal fallback. When the program
 resumes, it unmutes.
 
@@ -76,7 +76,7 @@ This release ships the full architecture, all the TV-control paths, and two
 working detection layers (loudness + ACR). The metadata layer remains a stub
 with a clear `TODO` at the function to implement (`src/detect/sources.cpp`).
 
-### Setting up ACR (optional but recommended)
+### Setting up ACR (optional but recommended) - NOT TESTED
 
 1. Create an ACRCloud project ("Audio & Video Recognition") and a **custom
    bucket**; upload recordings of the commercials you want recognized (national
