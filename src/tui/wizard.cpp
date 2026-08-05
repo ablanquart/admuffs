@@ -363,7 +363,7 @@ bool run_setup_wizard(Config& cfg, const IrDatabase& db, const std::string& conf
             // (see the mute paradox in README/HARDWARE.md).
             int tap = menu("Where does the audio input listen?",
                            {"Room microphone (hears the TV's speakers)",
-                            "Upstream tap (source line-out / HDMI extractor / TV optical-out) - recommended"},
+                            "Upstream tap (source line-out / HDMI extractor / TV optical-out)"},
                            cfg.audio_tap == "upstream" ? 1 : 0);
             if (tap >= 0) cfg.audio_tap = (tap == 1) ? "upstream" : "room";
 

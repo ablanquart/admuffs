@@ -79,7 +79,7 @@ mechanisms handle this, keyed by `audio_tap` and `mute_mode`:
 
 With `audio_tap=upstream` none of this is needed -- the tap hears the
 broadcast regardless of TV state -- so verdicts pass through unmodified and
-unmute timing is exact. That is the recommended wiring (HARDWARE.md §4).
+unmute timing is exact. The trade-off is extra wiring (HARDWARE.md §4).
 
 ## Fusion decision
 

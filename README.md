@@ -28,21 +28,10 @@ All audio consumers share a single **AudioBus** (one ALSA capture thread with a
 
 Muting the TV silences the very signal a room microphone detects with — so a
 naive loop would mute, hear its own silence, decide "the program is back",
-and unmute into the ad. admuffs deals with this three ways, selected by
+and unmute into the ad. admuffs deals with this four ways, selected by
 `audio_tap` and `mute_mode`:
 
-1. **Upstream tap (recommended, `audio_tap=upstream`)** — feed detection from
-   *before* the TV (source line-out, HDMI audio extractor, or TV optical-out).
-   Detection hears the broadcast while the TV is silent; unmute timing is
-   exact and signal-driven. No paradox at all.
-2. **Room mic + mute (`audio_tap=room`, `mute_mode=mute`)** — while muted,
-   audio-based "program" verdicts are discarded (they'd be measuring our own
-   mute) and the TV unmutes on the `max_mute_s` failsafe timer (default
-   240 s, roughly an ad-break length). Because that timer is the *only* way
-   out, the setup wizard doesn't offer Mute when you pick a room mic — this
-   combination can only be set by editing the config file directly, and
-   Admuffs logs a warning at startup when it sees it.
-3. **Room mic + volume drop (`mute_mode=volume_drop`, the default)** — instead of muting,
+1. **Room mic + volume drop (`mute_mode=volume_drop`, the default)** — instead of muting,
    volume drops `drop_steps` steps. The mic keeps hearing the (quieter) ad;
    admuffs measures the attenuation, compensates the detector, and restores
    volume when the program genuinely resumes. This is the default because
@@ -50,8 +39,7 @@ and unmute into the ad. admuffs deals with this three ways, selected by
    mic can time the restore correctly. With an upstream tap, switch to
    `mute_mode=mute` for fully silent ads (the wizard recommends the right
    one for your tap).
-
-4. **Volume normalization (`mute_mode=normalize`)** — a different philosophy:
+2. **Volume normalization (`mute_mode=normalize`)** — a different philosophy:
    don't silence ads, *level* them. admuffs continuously nudges the TV volume
    (VolumeUp/Down over the API or IR) so the room's smoothed loudness tracks
    a target you set. Open the web remote, get the TV to the volume you like,
@@ -63,6 +51,17 @@ and unmute into the ad. admuffs deals with this three ways, selected by
    steps) bounds drift from your set volume, a silence floor stops it from
    cranking the volume during dialogue pauses or when the TV is off, and the
    net adjustment is unwound when auto-mute is toggled off or admuffs exits.
+3. **Upstream tap (`audio_tap=upstream`)** — feed detection from
+   *before* the TV (source line-out, HDMI audio extractor, or TV optical-out).
+   Detection hears the broadcast while the TV is silent; unmute timing is
+   exact and signal-driven. No paradox at all.
+4. **Room mic + mute (`audio_tap=room`, `mute_mode=mute`)** — while muted,
+   audio-based "program" verdicts are discarded (they'd be measuring our own
+   mute) and the TV unmutes on the `max_mute_s` failsafe timer (default
+   240 s, roughly an ad-break length). Because that timer is the *only* way
+   out, the setup wizard doesn't offer Mute when you pick a room mic — this
+   combination can only be set by editing the config file directly, and
+   Admuffs logs a warning at startup when it sees it.
 
 The failsafe timer applies in mute and volume-drop modes as an upper bound:
 admuffs never stays muted/dropped longer than `max_mute_s` without a positive program

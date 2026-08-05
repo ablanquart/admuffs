@@ -45,7 +45,8 @@ struct Config {
     //   "upstream" - a tap BEFORE the TV (source line-out, HDMI audio
     //                extractor, often TV optical-out): detection keeps
     //                hearing the broadcast while the TV is silent, so unmute
-    //                timing is signal-driven. Recommended (see HARDWARE.md).
+    //                timing is signal-driven and mute_mode=mute becomes
+    //                viable. Needs extra wiring (see HARDWARE.md).
     std::string audio_tap = "room";
 
     // What to do about commercials:
