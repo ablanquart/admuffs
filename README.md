@@ -119,9 +119,9 @@ with a clear `TODO` at the function to implement (`src/detect/sources.cpp`).
 ## Hardware
 
 - Raspberry Pi (any 32/64-bit ARM model with a 40-pin header)
-- ANAVI Infrared pHAT (IR LED transmitter + IR receiver). Optional butrequired if your TV cannot be controlled via the network/.   API.
 - USB microphone placed near the TV speakers (for
   loudness detection and, later, ACR)
+- ANAVI Infrared pHAT (IR LED transmitter + IR receiver). Optional but required if your TV cannot be controlled via the            network/API.
 - Line of sight from the pHAT's IR LED to the TV
 
 ### Enabling the pHAT's IR transceiver (required, one-time)
