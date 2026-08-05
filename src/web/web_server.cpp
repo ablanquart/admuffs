@@ -92,6 +92,8 @@ const char* kRemotePage = R"HTML(<!DOCTYPE html>
               background:#20262e; border:1px dashed #39424e; line-height:1.5; }
   .menu-btn span { display:block; font-size:9px; letter-spacing:.03em;
                    color:#6b7684; margin-top:3px; }
+  .menu-btn .rec-tag { font-size:10px; letter-spacing:.08em; color:#9aa4b2;
+                       margin-top:2px; }
   .back-btn { margin-top:14px; font-size:12px; color:#9aa4b2;
               background:var(--btn); }
   .launcher { margin-top:14px; font-size:11px; letter-spacing:.08em;
@@ -255,7 +257,8 @@ const char* kRemotePage = R"HTML(<!DOCTYPE html>
     <div class="panel-title">AUDIO SAMPLING</div>
     <div class="panel-help">Calibration tools &mdash; each press measures ~2 s of
       microphone audio.</div>
-    <button class="menu-btn" id="s-level">FIX VOLUME TARGET &mdash; RECOMMENDED
+    <button class="menu-btn" id="s-level">FIX VOLUME TARGET
+      <span class="rec-tag">(RECOMMENDED)</span>
       <span>fix the volume at its current level (normalize mode)</span></button>
     <button class="menu-btn" id="s-normal">SAMPLE - NORMAL
       <span>press while regular programming is playing</span></button>
