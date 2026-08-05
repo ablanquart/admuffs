@@ -255,8 +255,8 @@ const char* kRemotePage = R"HTML(<!DOCTYPE html>
     <div class="panel-title">AUDIO SAMPLING</div>
     <div class="panel-help">Calibration tools &mdash; each press measures ~2 s of
       microphone audio.</div>
-    <button class="menu-btn" id="s-level">FIX VOLUME TARGET
-      <span>press at the volume you like (normalize mode)</span></button>
+    <button class="menu-btn" id="s-level">FIX VOLUME TARGET &mdash; RECOMMENDED
+      <span>fix the volume at its current level (normalize mode)</span></button>
     <button class="menu-btn" id="s-normal">SAMPLE - NORMAL
       <span>press while regular programming is playing</span></button>
     <button class="menu-btn" id="s-commercial">SAMPLE - COMMERCIAL

@@ -306,7 +306,7 @@ to setup; once configured, it defaults to `--run`. A sample config is in
     <td align="center" valign="top">
       <img src="docs/screenshots/06-audio-sampling.png" width="240" alt="Audio sampling"><br>
       <b>Audio sampling</b><br>
-      <sub>Calibrate the loudness threshold and volume target.</sub>
+      <sub>Fix Volume Target (recommended) + loudness calibration.</sub>
     </td>
   </tr>
   <tr>
@@ -350,7 +350,9 @@ the background either way, so flipping it back on is instant.
 
 **ADMUFFS SETTINGS** (the dashed button under the keypad) opens a hub with:
 
-- **Audio Sampling** — the detection-calibration and volume-target tools.
+- **Audio Sampling** — **FIX VOLUME TARGET (recommended)**: fix the volume at
+  its current level for normalize mode; plus the loudness-calibration Sample
+  buttons.
 - **Record Remote Codes** — pick a key, press RECORD, and press the button on
   your TV's real remote at the pHAT's IR receiver within 9 seconds. Recorded
   codes are saved to `~/.config/admuffs/recorded_keys.json`, override the
@@ -401,9 +403,16 @@ it, or `web_port=0` to disable. There is no authentication — anyone on your
 LAN can press buttons, the same trust model as an IR remote in the room; do
 not port-forward it.
 
-### Calibrating loudness detection from the remote
+### Audio sampling from the remote
 
-The two dashed buttons at the bottom — **Sample - Normal** and
+**FIX VOLUME TARGET (recommended)** — the top button on the Audio Sampling
+panel fixes the volume at its current level. Get the TV to the volume you
+like and press it: that sampled room level becomes the target the normalizer
+holds, pulling loud ads down and quiet program content back up
+(`mute_mode=normalize`). One press is all it takes, which is why it comes
+first — start here before the per-label sampling below.
+
+The two Sample buttons below it — **Sample - Normal** and
 **Sample - Commercial** — teach the detector what *your* room actually sounds
 like. Press Sample - Normal while ordinary programming is playing, and
 Sample - Commercial while an ad break is airing (a few presses of each, on
