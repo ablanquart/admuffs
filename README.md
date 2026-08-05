@@ -1,6 +1,6 @@
 # admuffs
 
-Control your TV via web remote, with the capability to automatically drop volume/normalize or mute TV commercials from a Raspberry Pi with an [ANAVI Infrared pHAT](https://www.crowdsupply.com/anavi-technology/infrared-phat). Please note, the ANAVI Infrared pHAT is **NOT** required if your TV can be controlled over the network/API. Written in portable C++17.
+Control your TV via web remote, with the capability to automatically drop volume/normalize or mute TV commercials from a Raspberry Pi with an [ANAVI Infrared pHAT](https://www.crowdsupply.com/anavi-technology/infrared-phat). Please note, the ANAVI Infrared pHAT is **NOT** required if your TV can be controlled over the network/API. 
 
 ## How commercial detection works
 
